@@ -4,13 +4,13 @@ import "../component/myheader.js";
 import "../view/main.js";
 import myFetch from "../data/fetchdata.js";
 import randomfood from "../data/fetchrandom.js";
-import meals from "../data/offlinedata.js";
 
 const main = () => {
   const searchElement = document.querySelector("my-header");
   const listfood = document.querySelector("food-list");
 
   const onButtonSearchClicked = async () => {
+    event.preventDefault();
     try {
       const result = await myFetch(searchElement.value);
       renderResult(result);

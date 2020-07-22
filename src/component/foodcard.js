@@ -12,16 +12,6 @@ class foodcard extends HTMLElement {
     this.render();
   }
 
-  youtube_parser(url) {
-    var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
-    var match = url.match(regExp);
-    return match && match[7].length == 11 ? match[7] : false;
-  }
-
-  /*   <iframe width="560" height="315" src="https://www.youtube.com/embed/${this.youtube_parser(
-        this._data.strYoutube
-      )}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
- */
   isVowel(c) {
     if (["a", "e", "i", "o", "u"].indexOf(c.charAt(0).toLowerCase()) !== -1) {
       return "an";
