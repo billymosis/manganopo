@@ -1,0 +1,60 @@
+.container {
+  display: grid;
+  height: 100vh;
+  grid-template-rows: auto 1fr auto;
+}
+.parent {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.box {
+  flex: 0 1 150px;
+  margin: 5px;
+  background-color: greenyellow;
+  width: 350px;
+}
+
+img {
+  max-width: 100%;
+  max-height: auto;
+  object-fit: cover;
+}
+
+.card-text {
+  background-color: hotpink;
+}
+
+main {
+  background: coral;
+}
+
+footer {
+  background: wheat;
+  padding: 2rem;
+  text-align: center;
+}
+
+header {
+  background: lightpink;
+}
+
+nav {
+  background-color: skyblue;
+  display: inline-block;
+  width: 100%;
+}
+
+nav ul {
+  background-color: springgreen;
+  list-style-type: none;
+}
+
+nav li {
+  float: left;
+}
+
+nav li a {
+  display: block;
+}

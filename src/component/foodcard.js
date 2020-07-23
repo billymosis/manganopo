@@ -1,3 +1,5 @@
+import css from "!to-string-loader!css-loader!../style/index.css"
+
 class foodcard extends HTMLElement {
   constructor() {
     super();
@@ -66,7 +68,10 @@ class foodcard extends HTMLElement {
   test() {
     let str = "";
     Object.values(this._recipe).forEach(
-      (x, i) => (str += `<li class="list-group-item">${Object.values(this._measure)[i]} of ${x}</li>`)
+      (x, i) =>
+        (str += `<li class="list-group-item">${
+          Object.values(this._measure)[i]
+        } of ${x}</li>`)
     );
     return str;
   }
@@ -75,34 +80,25 @@ class foodcard extends HTMLElement {
     this.filterIngredient(this._data);
     this.filterMeasure(this._data);
     this._shadowRoot.innerHTML = `
-    <link
-    rel="stylesheet"
-    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
-    crossorigin="anonymous"
-  />
- 
-    <div class="col card mb-2 mx-2 mt-1 p-0" style="height: auto; min-width:auto; width:auto">
-      <img src="${
-        this._data.strMealThumb
-      }" style="object-fit:cover ; width:auto ; height:300px"class="card-img-top" alt="food" />
-      <div class="card-body" style="height: 100%; width:500px">
-        <h5 style="height:24px" class="card-title">${this._data.strMeal}</h5>
+    <style>${css}</style>
+    <div class="box">
+      <img src="${this._data.strMealThumb}" alt="food" />
+      <div >
+        <h5>${this._data.strMeal}</h5>
         <h6>
           ${this.isVowel(this._data.strCategory)} ${this._data.strCategory} from
           <em> ${this._data.strArea}</em>
         </h6>
         <h6>Ingredients:</h6>
-        <ol class="text-truncate list-group overflow-auto" style="height: 200px ; word-wrap: normal" id="recipe"></ol>
-        <p
-          class="card-text text-truncate"
-          style="height: ${this._height}; white-space: normal;"
-        >
+        <ol id="recipe"></ol>
+        <p class="card-text">
           ${this._data.strInstructions}
         </p>
-        <div style="display:flex; justify-content:space-between">
+        <div>
         <a id="readMore" style="cursor: pointer;">${this._label}</a>
-        <a href="${this._data.strYoutube}" target="_blank" style="cursor: pointer;">Youtube</a>
+        <a href="${
+          this._data.strYoutube
+        }" target="_blank" style="cursor: pointer;">Youtube</a>
         </div>
       </div>
     </div>
